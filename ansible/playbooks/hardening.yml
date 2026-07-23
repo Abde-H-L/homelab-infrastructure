@@ -1,0 +1,49 @@
+---
+- name: Basic hardening for all nodes
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+
+    - name: Install ufw and fail2ban
+      apt:
+        name:
+          - ufw
+          - fail2ban
+        state: present
+
+    - name: Allow SSH through ufw
+      ufw:
+        rule: allow
+        port: '22'
+        proto: tcp
+
+    - name: Enable ufw
+      ufw:
+        state: enabled
+        policy: deny
+
+    - name: Ensure fail2ban is enabled and running
+      systemd:
+        name: fail2ban
+        enabled: true
+        state: started
+
+    - name: Ensure unattended-upgrades is installed
+      apt:
+        name: unattended-upgrades
+        state: present
+
+    - name: Enable unattended-upgrades
+      systemd:
+        name: unattended-upgrades
+        enabled: true
+        state: started

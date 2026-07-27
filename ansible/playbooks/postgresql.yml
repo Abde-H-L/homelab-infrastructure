@@ -1,0 +1,19 @@
+---
+- name: Install PostgreSQL on db and db2
+  hosts: db
+  become: true
+
+  tasks:
+    - name: Install PostgreSQL
+      apt:
+        name:
+          - postgresql
+          - postgresql-contrib
+        state: present
+        update_cache: yes
+
+    - name: Ensure PostgreSQL is enabled and running
+      systemd:
+        name: postgresql
+        enabled: true
+        state: started

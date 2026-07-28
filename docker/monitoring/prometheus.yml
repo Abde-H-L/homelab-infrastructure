@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets:
+          - '192.168.56.1:9100'
+          - '192.168.56.10:9100'
+          - '192.168.56.11:9100'
+          - '192.168.56.12:9100'
+          - '192.168.56.13:9100'
+          - 'localhost:9100'
+          - '192.168.56.15:9100'

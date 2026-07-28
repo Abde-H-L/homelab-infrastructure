@@ -1,6 +1,6 @@
 ---
-- name: Install Docker and Docker Compose on srv-web
-  hosts: web
+- name: Install Docker and Docker Compose on web and monitor
+  hosts: web,monitor
   become: true
 
   tasks:

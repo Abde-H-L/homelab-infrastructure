@@ -1,0 +1,18 @@
+services:
+  duplicati:
+    image: duplicati/duplicati:latest
+    container_name: srv-backup-duplicati
+    restart: unless-stopped
+    ports:
+      - "8200:8200"
+    environment:
+      - SETTINGS_ENCRYPTION_KEY=tu_clave_local
+      - DUPLICATI__WEBSERVICE_PASSWORD=qwe_123
+    volumes:
+      - duplicati_config:/config
+      - duplicati_backups:/backups
+      - /home/abde/backup-sources:/source
+
+volumes:
+  duplicati_config:
+  duplicati_backups:

@@ -1,6 +1,6 @@
 ---
-- name: Install Docker and Docker Compose on web and monitor
-  hosts: web,monitor
+- name: Install Docker and Docker Compose on web, monitor and backup
+  hosts: web,monitor,backup
   become: true
 
   tasks:

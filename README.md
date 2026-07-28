@@ -23,19 +23,7 @@ This repository contains all the configuration, documentation and screenshots of
 
 ## Infrastructure
 
-```text
-                     Internet
-                         │
-                  VirtualBox NAT
-                         │
-                     ┌────────┐
-                     │ srv-gw │
-                     └────────┘
-                         │
-─────────────────────────┼─────────────────────────
-        │          │          │         │         │
-     srv-ops    srv-web    srv-db    srv-db2  srv-monitor  srv-backup
-```
+ ![](screenshots/00-infrastructure-diagram.png)
 
 ---
 
